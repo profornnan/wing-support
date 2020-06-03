@@ -22,4 +22,20 @@ public class SupportService {
         for (Support data : dataList) responseDtos.add(new SupportResponseDto((data)));
         return responseDtos;
     }
+
+    public List<SupportResponseDto> findByArtistId(String id) {
+        List<SupportResponseDto> responseDtos = new ArrayList<>();
+        List<Support> dataList = supportRepository.findByArtistId(id);
+
+        for (Support data : dataList) responseDtos.add(new SupportResponseDto((data)));
+        return responseDtos;
+    }
+
+    public List<SupportResponseDto> findByUserId(String id) {
+        List<SupportResponseDto> responseDtos = new ArrayList<>();
+        List<Support> dataList = supportRepository.findByUserId(id);
+
+        for (Support data : dataList) responseDtos.add(new SupportResponseDto((data)));
+        return responseDtos;
+    }
 }

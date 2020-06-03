@@ -12,8 +12,8 @@ public class SupportResponseDto {
     private final String datetime;
 
     public SupportResponseDto(Support support) {
-        this.artistName = support.getArtist().get("name");
-        this.userName = support.getUser().get("name");
+        this.artistName = support.getArtistName();
+        this.userName = support.getUserName();
         this.amount = support.getAmount();
         this.datetime = support.getDatetime();
     }
