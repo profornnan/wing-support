@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import wing.support.domain.Support;
 import wing.support.domain.SupportRepository;
 import wing.support.web.dto.SupportResponseDto;
+import wing.support.web.dto.SupportSaveDto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,5 +38,9 @@ public class SupportService {
 
         for (Support data : dataList) responseDtos.add(new SupportResponseDto((data)));
         return responseDtos;
+    }
+
+    public String save(SupportSaveDto requestDto) {
+        return supportRepository.save(requestDto.toEntity()).getId();
     }
 }

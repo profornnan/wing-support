@@ -3,12 +3,10 @@ package wing.support.web;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import wing.support.service.SupportService;
 import wing.support.web.dto.SupportResponseDto;
+import wing.support.web.dto.SupportSaveDto;
 
 import java.util.List;
 
@@ -36,5 +34,11 @@ public class SupportController {
     @GetMapping("/api/support/user/{id}")
     private List<SupportResponseDto> getSupportListByUserId(@PathVariable("id") String id) {
         return supportService.findByUserId(id);
+    }
+
+    @ApiOperation(value = "후원 정보 저장")
+    @PostMapping("/api/support/")
+    private String save(@RequestBody SupportSaveDto requestDto) {
+        return supportService.save(requestDto);
     }
 }
