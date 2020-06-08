@@ -7,13 +7,13 @@ import wing.support.domain.Support;
 public class SupportResponseDto {
 
     private final String artistName;
-    private final String name;
+    private final String userName;
     private final Long amount;
     private final String datetime;
 
     public SupportResponseDto(Support support) {
         this.artistName = support.getArtistName();
-        this.name = support.getName();
+        this.userName = support.getUserName();
         this.amount = support.getAmount();
         this.datetime = support.getDatetime();
     }

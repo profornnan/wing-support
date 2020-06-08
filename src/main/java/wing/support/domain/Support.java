@@ -3,6 +3,7 @@ package wing.support.domain;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -12,7 +13,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "support")
 public class Support {
     @Id
-    private String id;
+    private ObjectId id;
     private String userId;
     private String artistId;
     private Long amount;
@@ -20,13 +21,13 @@ public class Support {
     private String uid;
 
     @Transient
-    private String name = "";
+    private String userName = "";
 
     @Transient
     private String artistName = "";
 
-    public Support withName(String name) {
-        this.setName(name);
+    public Support withUserName(String name) {
+        this.setUserName(name);
         return this;
     }
 

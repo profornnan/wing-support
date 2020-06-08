@@ -3,6 +3,7 @@ package wing.support.web;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
+import org.bson.types.ObjectId;
 import org.springframework.web.bind.annotation.*;
 import wing.support.service.SupportService;
 import wing.support.web.dto.SupportResponseDto;
@@ -38,7 +39,7 @@ public class SupportController {
 
     @ApiOperation(value = "후원 정보 저장")
     @PostMapping("/api/support/")
-    private String save(@RequestBody SupportSaveDto requestDto) {
+    private ObjectId save(@RequestBody SupportSaveDto requestDto) {
         return supportService.save(requestDto);
     }
 }
