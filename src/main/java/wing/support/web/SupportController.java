@@ -42,4 +42,16 @@ public class SupportController {
     private ObjectId save(@RequestBody SupportSaveDto requestDto) {
         return supportService.save(requestDto);
     }
+
+    @ApiOperation(value = "후원 정보를 UID로 조회", notes = "UID 필요")
+    @GetMapping("/api/support/uid/{uid}")
+    private SupportResponseDto getSupportByUid(@PathVariable("uid") String uid) {
+        return supportService.findByUid(uid);
+    }
+
+    @ApiOperation(value = "후원 정보 삭제", notes = "UID 필요, 해당 후원 내역을 삭제")
+    @DeleteMapping("/api/support/uid/{uid}")
+    private String deleteByUid(@PathVariable("uid") String uid) {
+        return supportService.deleteByUid(uid);
+    }
 }

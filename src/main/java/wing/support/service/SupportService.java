@@ -61,6 +61,20 @@ public class SupportService {
         return responseDtos;
     }
 
+    public SupportResponseDto findByUid(String uid) {
+        Support support = supportRepository.findByUid(uid);
+
+        support.withUserName(userClient.getUser(support.getUserId()).getName())
+                .withArtistName(artistClient.getArtist(support.getArtistId()).getArtistName());
+
+        return new SupportResponseDto(support);
+    }
+
+    public String deleteByUid(String uid) {
+        supportRepository.deleteByUid(uid);
+        return uid;
+    }
+
     public ObjectId save(SupportSaveDto requestDto) {
         return supportRepository.save(requestDto.toEntity()).getId();
     }
